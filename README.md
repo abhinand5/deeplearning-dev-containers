@@ -42,7 +42,11 @@ You should have the below mentioned tools set up and ready to go. I have linked 
 
 You can also pull the prebuilt deep learning image from docker hub using this command
 
-`$ sudo docker pull abhinand5/deeplearning-dev:v0.1.1`
+`$ sudo docker pull abhinand5/deeplearning-dev`
+
+For a specific version, eg: v0.1.2
+
+`$ sudo docker pull abhinand5/deeplearning-dev:v0.1.2`
 
 > **Note**: Image size is bigger than whats shown in DockerHub, ~8GB after building on my machine.
 
