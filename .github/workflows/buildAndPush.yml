@@ -22,6 +22,13 @@ jobs:
       - name: Set env
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       
+      - name: Get current git tag
+        uses: olegtarasov/get-tag@v2.1
+        id: tagName
+        with:
+          tagRegex: "(.*)"  # Optional. Returns specified group text as tag name. Full tag string is returned if regex is not defined.
+          tagRegexGroup: 1 # Optional. Default is 1.
+
       - name: Make docker use build cache
         run: docker buildx create --use
 
@@ -47,7 +54,7 @@ jobs:
           file: deepLearning.Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev:latest
+          tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev:${{ steps.tagName.outputs.tag }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: Image digest
