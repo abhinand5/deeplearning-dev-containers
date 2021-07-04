@@ -23,7 +23,7 @@ You should have the below mentioned tools set up and ready to go. I have linked 
 
 You can also pull the prebuilt deep learning image from docker hub using this command
 
-`$ sudo docker pull abhinand5/deeplearning-dev:v0.1`
+`$ sudo docker pull abhinand5/deeplearning-dev:v0.1.1`
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
