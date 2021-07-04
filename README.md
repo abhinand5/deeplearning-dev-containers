@@ -9,6 +9,9 @@ This is a personal container-based Deep Learning setup I am using for developmen
 
 > If you find this useful feel free to leave a :star:
 
+## References
+1. [Deep learning with containers. Part 1 by Alexander Visheratin in TDS](https://towardsdatascience.com/deep-learning-with-containers-part-1-4779877492a1)
+
 ## What does it include?
 - PyTorch 1.9 (GPU)
 - Tensorflow 2.5 (CPU)
@@ -39,6 +42,10 @@ You should have the below mentioned tools set up and ready to go. I have linked 
 3. Use Docker Compose to build the images and launch the containers. 
 
     `$ sudo docker-compose up -d`
+
+    You can also use `--build` flag to specify you want to build/rebuild the image.
+
+    `$ sudo docker-compose up -d --build`
 
 You can also pull the prebuilt deep learning image from docker hub using this command. The badge at the top of this README.md file shows the latest version. For a specific version, eg: v0.1.2 
 
