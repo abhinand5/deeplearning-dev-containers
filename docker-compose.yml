@@ -18,7 +18,7 @@ services:
             ]
 
     deeplearning-server:
-        image: deeplearning-base
+        image: deeplearning-dev
         init: true
         build:
             context: ./

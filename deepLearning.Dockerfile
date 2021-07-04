@@ -26,10 +26,22 @@ FROM deeplearning-base
 RUN pip3 install \
     matplotlib \
     scikit-learn \
-    seaborn 
+    seaborn \
     timm \
     transformers \
     albumentations \
-    cv2 \
+    opencv-python \
     Pillow \
-    spacy
+    spacy \
+    plotly \
+    plotly_express \
+    librosa \
+    imbalanced-learn \
+    scipy \
+    hyperopt \
+    tqdm \
+    jupyter \
+    ray \
+    xgboost \
+    lightgbm \
+    keras \
