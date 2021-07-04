@@ -20,7 +20,7 @@ This is a personal container-based Deep Learning setup I am using for developmen
 - Multi-stage builds to reduce build times after adding new packages. 
 - Tensorboard external container for logging
 
-> **Note**: Does not include tensorflow for GPU as of now. 
+> **Note**: DOES NOT include tensorflow for GPU as of now. 
 
 ## Getting started
 
@@ -40,11 +40,7 @@ You should have the below mentioned tools set up and ready to go. I have linked 
 
     `$ sudo docker-compose up -d`
 
-You can also pull the prebuilt deep learning image from docker hub using this command
-
-`$ sudo docker pull abhinand5/deeplearning-dev`
-
-For a specific version, eg: v0.1.2
+You can also pull the prebuilt deep learning image from docker hub using this command. The badge at the top of this README.md file shows the latest version. For a specific version, eg: v0.1.2 
 
 `$ sudo docker pull abhinand5/deeplearning-dev:v0.1.2`
 
