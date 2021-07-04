@@ -5,9 +5,22 @@
 [![](https://img.shields.io/docker/image-size/abhinand5/deeplearning-dev)](https://hub.docker.com/r/abhinand5/deeplearning-dev)
 [![](https://img.shields.io/docker/v/abhinand5/deeplearning-dev)](https://hub.docker.com/r/abhinand5/deeplearning-dev)
 
-This is a personal container-based Deep Learning setup I use for development.
+This is a personal container-based Deep Learning setup I am using for development.
 
 > If you find this useful feel free to leave a :star:
+
+## What does it include?
+- PyTorch 1.9 (GPU)
+- Tensorflow 2.5 (CPU)
+- Huggingface Transformers 4.8.2 
+- Several other useful ML/DL packages
+- Nvidia GPU Driver 465.31
+- CUDA 11.2.0
+- cuDNN 8
+- Multi-stage builds to reduce build times after adding new packages. 
+- Tensorboard external container for logging
+
+> **Note**: Does not include tensorflow for GPU as of now. 
 
 ## Getting started
 
@@ -30,6 +43,8 @@ You should have the below mentioned tools set up and ready to go. I have linked 
 You can also pull the prebuilt deep learning image from docker hub using this command
 
 `$ sudo docker pull abhinand5/deeplearning-dev:v0.1.1`
+
+> **Note**: Image size is bigger than whats shown in DockerHub, ~8GB after building on my machine.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

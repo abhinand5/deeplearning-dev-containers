@@ -9,12 +9,9 @@ RUN apt update && apt install -y --no-install-recommends \
     python3-dev \
     python3-pip \
     python3-setuptools
-# Make Python 3 the default python binary
-RUN ln -s /usr/bin/python3.6 /usr/local/bin/python && \
-    ls -s /usr/bin/pip3 /usr/bin/pip
-RUN pip -q install pip --upgrade
+RUN pip3 -q install pip --upgrade
 # Install all basic packages
-RUN pip install --no-cache-dir \
+RUN pip3 install --no-cache-dir \
     # Jupyter itself
     jupyter \
     # Numpy and Pandas are required a-priori
@@ -24,27 +21,30 @@ RUN pip install --no-cache-dir \
     # Upgraded version of Tensorboard with more features
     tensorboardX
 # Here we use a base image by its name - "deeplearning-base"
-FROM deeplearning-base
+FROM deeplearning-base AS other-light
 # Install additional packages
-RUN pip install --no-cache-dir \
+RUN pip3 install --no-cache-dir \
     matplotlib \
     scikit-learn \
     seaborn \
-    timm \
-    transformers \
-    albumentations \
     opencv-python \
     Pillow \
     spacy \
     plotly \
     plotly_express \
+    timm \
     librosa \
     imbalanced-learn \
     scipy \
     hyperopt \
     tqdm \
-    jupyter \
     ray \
+    transformers \
+    albumentations \
+    lightgbm
+FROM other-light AS other-heavy 
+# Install less common but useful packages
+RUN pip3 install --no-cache-dir \
+    tensorflow-cpu \
     xgboost \
-    lightgbm \
-    keras \
+    catboost
