@@ -5,7 +5,7 @@
 [![](https://img.shields.io/docker/image-size/abhinand5/deeplearning-dev)](https://hub.docker.com/r/abhinand5/deeplearning-dev)
 [![](https://img.shields.io/docker/v/abhinand5/deeplearning-dev)](https://hub.docker.com/r/abhinand5/deeplearning-dev)
 
-A Deep Learning container-based development setup that I use for development. 
+This is a personal container-based Deep Learning setup I use for development.
 
 > If you find this useful feel free to leave a :star:
 
