@@ -1,5 +1,11 @@
-# DL Dev Containers
-This is a personal container-based Deep Learning setup I use for development. 
+# Deep Learning in Containers 
+
+[![CI to Docker Hub](https://github.com/abhinand5/deeplearning-dev-containers/actions/workflows/buildAndPush.yml/badge.svg?branch=v0.1.1)](https://github.com/abhinand5/deeplearning-dev-containers/actions/workflows/buildAndPush.yml)
+[![](https://img.shields.io/docker/pulls/abhinand5/deeplearning-dev.svg)](https://hub.docker.com/r/abhinand5/deeplearning-dev)
+[![](https://img.shields.io/docker/image-size/abhinand5/deeplearning-dev)](https://hub.docker.com/r/abhinand5/deeplearning-dev)
+[![](https://img.shields.io/docker/v/abhinand5/deeplearning-dev)](https://hub.docker.com/r/abhinand5/deeplearning-dev)
+
+A Deep Learning container-based development setup that I use for development. 
 
 > If you find this useful feel free to leave a :star:
 
