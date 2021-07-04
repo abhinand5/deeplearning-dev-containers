@@ -22,7 +22,7 @@ services:
         init: true
         build:
             context: ./
-            dockerfile: deeplearning.Dockerfile
+            dockerfile: deepLearning.Dockerfile
         deploy:
             resources:
                 reservations:
