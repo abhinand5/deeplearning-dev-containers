@@ -2,16 +2,30 @@
 # We also mark this image as "deeplearning-base" so we could use it by name
 FROM nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu20.04 AS deeplearning-base
 WORKDIR /
-# Install Python and its tools
-RUN apt update && apt install -y --no-install-recommends \
+# Install essential packages
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     build-essential \
-    python3-dev \
-    python3-pip \
-    python3-setuptools
-RUN pip3 -q install pip --upgrade
+    software-properties-common \
+    curl \
+    zip \
+    unzip \
+    net-tools \
+    openssh-client
+# Install Python
+RUN add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+    python3.8 \
+    python3-setuptools \
+    python3-pip
+# Make python3 the default python version
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1 
+# Upgrade pip
+RUN pip -q install pip --upgrade
 # Install all basic packages
-RUN pip3 install --no-cache-dir \
+RUN pip install --no-cache-dir \
     # Jupyter itself
     jupyter \
     # Numpy and Pandas are required a-priori
@@ -21,30 +35,38 @@ RUN pip3 install --no-cache-dir \
     # Upgraded version of Tensorboard with more features
     tensorboardX
 # Here we use a base image by its name - "deeplearning-base"
-FROM deeplearning-base AS other-light
 # Install additional packages
-RUN pip3 install --no-cache-dir \
+FROM deeplearning-base AS other-light
+RUN pip install --no-cache-dir \
+    # Plotting
     matplotlib \
-    scikit-learn \
     seaborn \
-    opencv-python \
-    Pillow \
-    spacy \
     plotly \
     plotly_express \
+    # Scientific/ML packages
+    scipy \
+    scikit-learn \
+    lightgbm \
+    sktime \
+    imbalanced-learn \
+    # Image data utils
+    opencv-python \
+    Pillow \
+    # NLP
+    transformers \ 
+    spacy \
+    # Hyperparamerter Optimization
+    scikit-optimize \
+    hyperopt \
+    optuna \
+    # Utilities
     timm \
     librosa \
-    imbalanced-learn \
-    scipy \
-    hyperopt \
-    tqdm \
-    ray \
-    transformers \
     albumentations \
-    lightgbm
+    tqdm
+# Install other useful packages (non-light)
 FROM other-light AS other-heavy 
-# Install less common but useful packages
-RUN pip3 install --no-cache-dir \
+RUN pip install --no-cache-dir \
     tensorflow-cpu \
     xgboost \
     catboost

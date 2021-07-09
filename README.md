@@ -1,6 +1,6 @@
 # Deep Learning in Containers 
 
-[![CI to Docker Hub](https://github.com/abhinand5/deeplearning-dev-containers/actions/workflows/buildAndPush.yml/badge.svg?branch=v0.1.1)](https://github.com/abhinand5/deeplearning-dev-containers/actions/workflows/buildAndPush.yml)
+[![CI to Docker Hub](https://github.com/abhinand5/deeplearning-dev-containers/actions/workflows/buildAndPush.yml/badge.svg?branch=v0.1.2)](https://github.com/abhinand5/deeplearning-dev-containers/actions/workflows/buildAndPush.yml)
 [![](https://img.shields.io/docker/pulls/abhinand5/deeplearning-dev.svg)](https://hub.docker.com/r/abhinand5/deeplearning-dev)
 [![](https://img.shields.io/docker/image-size/abhinand5/deeplearning-dev)](https://hub.docker.com/r/abhinand5/deeplearning-dev)
 [![](https://img.shields.io/docker/v/abhinand5/deeplearning-dev)](https://hub.docker.com/r/abhinand5/deeplearning-dev)
@@ -47,9 +47,9 @@ You should have the below mentioned tools set up and ready to go. I have linked 
 
     `$ sudo docker-compose up -d --build`
 
-You can also pull the prebuilt deep learning image from docker hub using this command. The badge at the top of this README.md file shows the latest version. For a specific version, eg: v0.1.2 
+You can also pull the prebuilt deep learning image from docker hub using this command. The badge at the top of this README.md file shows the latest version. For a specific version, eg: v0.1.3 
 
-`$ sudo docker pull abhinand5/deeplearning-dev:v0.1.2`
+`$ sudo docker pull abhinand5/deeplearning-dev:v0.1.3`
 
 > **Note**: Image size is bigger than whats shown in DockerHub, ~8GB after building on my machine.
 
