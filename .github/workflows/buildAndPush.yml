@@ -57,9 +57,24 @@ jobs:
           tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev:${{ steps.tagName.outputs.tag }}-cpu
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
-      
-      - name: CPU Image digest
+    
+      - name: CPU Image (Version) digest
         run: echo ${{ steps.docker_build_cpu.outputs.digest }}
+      
+      - name: Build and push (CPU) LATEST
+        id: docker_build_cpu_latest
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: cpu.Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev:latest-cpu
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+      
+      - name: CPU Image (Latest) digest
+        run: echo ${{ steps.docker_build_cpu_latest.outputs.digest }}
 
       - name: Build and push (GPU)
         id: docker_build_gpu
@@ -73,5 +88,20 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
-      - name: GPU Image digest
+      - name: GPU Image (Version) digest
         run: echo ${{ steps.docker_build_gpu.outputs.digest }}
+      
+      - name: Build and push (GPU) LATEST
+        id: docker_build_gpu_latest
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: gpu.Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: GPU Image (Latest) digest
+        run: echo ${{ steps.docker_build_gpu_latest.outputs.digest }}

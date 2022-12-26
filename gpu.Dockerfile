@@ -1,6 +1,6 @@
 # NVIDIA CUDA image as a base
 # We also mark this image as "deeplearning-base" so we could use it by name
-FROM nvidia/cuda:11.2.0-cudnn8-runtime-ubuntu20.04 AS deeplearning-base
+FROM nvidia/cuda:11.3.0-cudnn8-runtime-ubuntu20.04 AS deeplearning-base
 WORKDIR /
 # Install essential packages
 ARG DEBIAN_FRONTEND=noninteractive
@@ -30,8 +30,8 @@ RUN pip install --no-cache-dir \
     jupyter \
     # Numpy and Pandas are required a-priori
     numpy pandas \
-    # PyTorch with CUDA 11.1 support and Torchvision
-    torch torchvision \
+    # PyTorch with CUDA 11.3 support and Torchvision
+    torch torchvision torchaudio \
     # Upgraded version of Tensorboard with more features
     tensorboardX
 # Here we use a base image by its name - "deeplearning-base"
