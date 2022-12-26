@@ -54,7 +54,7 @@ jobs:
           file: cpu.Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev/python-cpu:${{ steps.tagName.outputs.tag }}
+          tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev:${{ steps.tagName.outputs.tag }}-cpu
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
       
@@ -69,7 +69,7 @@ jobs:
           file: gpu.Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev/python-gpu:${{ steps.tagName.outputs.tag }}
+          tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev:${{ steps.tagName.outputs.tag }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
