@@ -18,11 +18,8 @@ services:
       ]
 
   deeplearning-server:
-    image: deeplearning-dev
+    image: abhinand5/deeplearning-dev:latest
     init: true
-    build:
-      context: ./
-      dockerfile: gpu.Dockerfile
     deploy:
       resources:
         reservations:

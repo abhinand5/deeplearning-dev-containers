@@ -18,10 +18,7 @@ services:
       ]
 
   deeplearning-cpu-server:
-    image: deeplearning-dev-cpu
-    build:
-      context: ./
-      dockerfile: cpu.Dockerfile
+    image: abhinand5/deeplearning-dev:latest-cpu
     init: true
     env_file: ./.env
     ports:
