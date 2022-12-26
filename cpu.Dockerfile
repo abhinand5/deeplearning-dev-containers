@@ -1,6 +1,6 @@
 # Python buster official image as a base
 # We also mark this image as "ml-base" so we could use it by name
-FROM python:3.10.9-buster AS ml-base
+FROM python:3.10.9-slim-bullseye AS ml-base
 WORKDIR /
 # Install essential packages
 ARG DEBIAN_FRONTEND=noninteractive
