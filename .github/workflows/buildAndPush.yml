@@ -45,21 +45,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-          
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          context: ./
-          file: gpu.Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev/python-gpu:${{ steps.tagName.outputs.tag }}
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache
-      
-      - name: Build and push
-        id: docker_build
+
+      - name: Build and push (CPU)
+        id: docker_build_cpu
         uses: docker/build-push-action@v2
         with:
           context: ./
@@ -69,6 +57,21 @@ jobs:
           tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev/python-cpu:${{ steps.tagName.outputs.tag }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
+      
+      - name: CPU Image digest
+        run: echo ${{ steps.docker_build_cpu.outputs.digest }}
 
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Build and push (GPU)
+        id: docker_build_gpu
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: gpu.Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/deeplearning-dev/python-gpu:${{ steps.tagName.outputs.tag }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: GPU Image digest
+        run: echo ${{ steps.docker_build_gpu.outputs.digest }}
