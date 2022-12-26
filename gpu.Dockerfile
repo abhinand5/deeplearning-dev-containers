@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
-    python3.8 \
+    python3.10 \
     python3-setuptools \
     python3-pip
 # Make python3 the default python version

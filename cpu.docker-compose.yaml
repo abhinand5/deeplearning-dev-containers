@@ -17,17 +17,12 @@ services:
         "--bind_all"
       ]
 
-  deeplearning-server:
-    image: deeplearning-dev
-    init: true
+  deeplearning-cpu-server:
+    image: deeplearning-dev-cpu
     build:
       context: ./
-      dockerfile: gpu.Dockerfile
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [ gpu ]
+      dockerfile: cpu.Dockerfile
+    init: true
     env_file: ./.env
     ports:
       - ${JUPYTER_PORT}:${JUPYTER_PORT}
